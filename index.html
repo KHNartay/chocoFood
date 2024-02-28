@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./style.css">
+    <title>chocoFood</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="header-top-left">
+
+                <div class="choco-top ">
+                    <p class="header-top-left-text">Скидка до 90%</p>
+                    <img src="./img chocoFood/chocoFood-top.svg" alt="">
+                </div>
+
+                <div class="choco-top">
+                    <p class="header-top-left-text">Авиабилеты</p>
+                    <img src="data:image/webp;base64,UklGRgQEAABXRUJQVlA4WAoAAAAQAAAAVAAADwAAQUxQSGMCAAANkHDbtqm3yteH2rZt27Ztu41t27Ztp7Zt23bjfPFrFBETQPXcxWuKpKzrcueqi2CEDtVfIiurdfjqT1XFJPrWcEE0y8yAfk5T+W1nPfJSZvnV3ORdIbtPPKoljHwY5Xto2Z8h67pSkU30FSqkfP0O28Ezuoi2tf8V/A16LxMl3AXWdyPyYfs1dU+chrqq3Eha05PHx/bAwUvKZy6DbuTjgYtepn0rn6FspWSBaOSV7WqT3q8wisuMsgypc+a946+6fcKO3wk7owOT+dhql1murH6WbJbC+r49fRi4XM5ytsNSzfkPyqUT10sRs4vo89vSnVSf0/ifxrIvzYAHvn48KUi+nTEPpqAD+HMoec9u53RmXWqtMorrls5u5ZInlZVS6pNxbXCDkJ29GwcCzZvpwMleK89QdrM56++/qusv1/7iEtXlzBnJ5YavyuVRr4G3BeTVy0FUAEjqvgHEiAqgQJovIPz27raj+HLT7lJbxXWIIC2Tcn38JdxFADzoM/0oM7n3d99V+Fxz+VF6c7RF/YwyZiyBMZ1lfumSI3wakXoFIF9a8H9sfyjnn9lH5Fba97gfj7OGhBPpY+4y/Khqhuj56su/azcIPtHERlQAFyLuyG79ImKj5mIeX/x1+N14k3ePLWPK4eEKW+c6sVcLLrWCW/XY0exIHbkHfFvoY3/xssH51P4GfmQNM513+l8MsEjOXqxVD7b1B3aKbTucrc36VY3u9xWUUwB8Nb8OsBbQBDxjCgAe2D4D4n0yAO6HZoAr8MXzGyVTLgDZcVdlwKsk5I0aCchTpro8uiJLgIxqEwBWUDggegEAAJAIAJ0BKlUAEAA+3WClTailoyIwFVqpEBuJbACdMuN8B5FvWbjxwI2B6gM4B+qH6zdhTeDOfL9iL+6gIWpLvdaHMEilIGWaP6IOIW8AAP4fA2ruFOf96B8buJ6khjGR7Tq42rAVDFgLTVUA9i2A4Rfdpvdcbu6VjicVabjYDKdFViKXmvC+xy30XrXD83/5TMOOx7hSaDE52zOv5iOVieMCKHBWUODpTVSXFnAihKzlRKcG6fviV6n03q//awyhj8pCrMDIJTPhcfn7K+gNgfgTFODBFpnUoOqxIG6HV8j8R4JtG+lFPRsyYZj/t2mBX207oxmO1XLOVn6yOSskvVnHdKQI0l+VOfx6F4gCdXE++J/+kB4Sk26gJgkC+hP/ziePjzGO2Y+oWf1gPKWn5Wlx43BcvIUziFfRthYEcSZ9HLPV17Lsf6zfPgCWSGNPIb+Q3RnuiKgdys02bcvqOi6GZ/7kuh/n0davkb4wE8TsyjpSfPBR/5PAAA=="
+                        alt="">
+                </div>
+
+                <div class="choco-top">
+                    <p class="header-top-left-text">Оптика</p>
+                    <img src="data:image/webp;base64,UklGRtQEAABXRUJQVlA4WAoAAAAQAAAAKwEARAAAQUxQSLgCAAABDzD/ERGCsrT/ae7mpygzDn4KpyidVdfcBj/nAgq3wMzMtcoU3DHdSEczYd6Wq+KKnKLOHMe/hRTbOrCP6P8EYM6+cTo0FVqRZV7kSMkii4wC+R5VvpY8Og0syR9osrlp8N6kgk+UWX6qCwSSlzK9gALNNNgIiZbkD5mMFWDCZCkd7HS4w6eOUmV54F64abDs6I3w0Ucs4MRQo3VHJ1WiaAX8cFe9Wxd1pJ5FBg0AITKYHhWWTQuKTbmaBMtpUuVqZ4ItgDGwCVgHBWjAS21Fr7rEdgpLuY4/VHCED0o72YGJpgIpHYvAv4ma0l9WupYAu7UEWXiqQFIEFp5KB9GrrAW9qt8x4WgVROOUV9AN+ljlZWlVDR1s6eWbMF5Cv92vcNLA1MCrMF6Oob2ALns5aQsDnXJSY+wFDprBBF6FclJhkxf4rhjKq26t7EdGjtPDUnYrhkKjMkkgcqbT52owdNMGQDuMThiMo3GXKrJFD516s59KvHqFMcohJGC8MNBBmERjEwFA04GULRNUicBELTqUiSZRX6Hm5shLIHQLFUbQjjLhuckLjFwXA0cKZzDCdSDWYWSFLdd5YOREp8x1SuXy06vIYQG4lMyxE4CdBnUXkSOZAu799ejJk1vDq/6no4/cuVsFu0MdYh32TC4RANqoAu69+YET585tPTfx8MMP3rn76q3u3O5de/Zc/fXWRBOVgFt5w5Onzm09jpsf/O2eL65acu8XO+3upVOvvb80CpEB7PKoae0tv/15zxeml48U4FZGS+bj9gfvPbcbS7Z8sfud3Quv/fr9hZGLJHDvfz+dvMhvvrn3/5MPnzt0bXCHDu3bPTm173KIEAlg4ucj73009eyr7u/3HvhYqWfttWrHx89dWvhanWjJCvEEkjciuWUBugfSDOJUD0fKQWzRA02J2RJWUDgg9gEAADATAJ0BKiwBRQA+3WCqTr0lJCIo1syjoBuJZW7ebZvwrRKwh30ecA827TIt4s/dHKuegHv+9/gPd0OBKUok60FRIfBi+kUd0DLIbpy14fXmdm17Nr2asgWHIBpr3sCXAixSiTI+uFrHFaIFilrmbXMliOZlloEqHRqe7zgGBBFQz02DTgfqXxQzK1DSuH1EGbkfOa1hgmjOWIRXkQu2W2msAAD+7M+//jksLq8CEK7+/63muhcrHVufT5YGG8fr7RL+3owDOb+NmWglem8wsAsEzd7FeOocF7w/j66Y7qvF7+pvy02BinaqXrLJqeGIHvvsIvEgnh/6AT86QBqIzQ/DRcLB5ETeX0eP/oYurkJ9g/Hp2x5XAcW575/ID148d2M+htSymSt/vGvpOfBuLEpXjH4gLuLmnYWUXzHKgkrraUZLYNCCDrQAGBFTW9p/8zO2l1qq+Mh9x4rrYuHP91SOxht+Xj1hdeKhsONHfpOvn15LAAkwc3W7Ag1c3hMv4sO68ysL80lymtE//EN3DyX5LxwVbnU07J484eMUkPjgpvNJYuXTuxpqu5XfWnf2xmCKj8v8Xme282Ds37bO+lal79+PDrIdYNuEB4YBGW7v7/mcm7/QJkEIftpK9Cxu8J3XPEQv/+G2foI7//Hf0TFNqAAAAAA="
+                        alt="">
+                </div>
+
+                <div class="choco-top">
+                    <p class="header-top-left-text">Пойск врачей</p>
+                    <img src="data:image/webp;base64,UklGRi4DAABXRUJQVlA4WAoAAAAQAAAASQAADwAAQUxQSH8CAAANkChJsmlbdW3btm3bxrNt27Zt27Zt++rZtt/eZz/9QERMQETXeRuHANzcUsY/3vnBfKSvpaBps4W3lCySB1d2PvlnouP6/aFazzb9Rpn9FR0W3vx8t0ypfFq9O3+k45VNf+j3M/mug+juads69QAV6xu+lz+JBGl824/EII0vB8X07U79kcfHQmRw7P68Napjc+/n7NFe2AcSZoL8p3Eb4DgOZVHzQdGl3iYqtz9qSqAM9cNWkaa7RVYg+UK4UZfH7XyU1j++935cYtcTOefdu6p3H6TfDNXA0SczL3gsujb48Pdg/ZL3yNz00ocP7YEmKb2lldmbxDTkOnXQ2bVsyqNiuLyLC17Kp2D82zy41GfZ8AFy9nbI3vAmEF6cBd+mmUjXQlFxNcLtDVAZjOS4aQAvd4w+zH5kz/kQhqjW/Jn8ZsSbCs/vIgqvLLkmyZhbAiq8P314KCvWtgfi88rb/YZpzFQ+Jp8X+C01sNB+JeWRsd5zgdkbVL/K2nur4tBuQUP8kW42+eFY1s1bBCgV1eRpu01i3xS/wfkOOwRpa5DcsPj9kIPg1Lo7sr31UYvLe50CQy++X4Xc+GsrGHQgujvE7+Zx+MtHDFzbuDFMpIGIRp3tNwFyej3tfUx1ybHNEoYHwcvJo4GKbl/cntk+cIf5H8u6XPfYNJoFLc7drzH8WuXoKy50QDQ161E/AekTy3rko3kUOM10s+vewPcXiC7v2CNsyUyAxtt87bcD+/N9/RTpNSPA4+IxIMIQNowwgVQjeJ34zmzxNIRm6G3bcwWQsxHjyfOLTRCtKkf06fVvwMNr3xDeAT4dA+4CvHsEH0WgbfAaUyS/njid/xQAVlA4IIgAAABwBACdASpKABAAPt1kq0+opSOjLNgIARAbiWwAv0YgDeWQEBQS5mlEKDVeAADiEMTTbJdlX83WyaNJnlcFNFwqExeSELOx7CEPADtOhl1Pv6vlQzYOjH9CNjM6m+/SjHOif/5qdjiGAnQ4mGtEMTWCP3CyX9HZemwsIZr5af6MyHf//CcOgAAA"
+                        alt="">
+                </div>
+
+                <div class="choco-top">
+                    <p class="header-top-left-text">Оплата с кэшбеком</p>
+                    <img src="data:image/webp;base64,UklGRlQDAABXRUJQVlA4WAoAAAAQAAAAUgAACwAAQUxQSEsCAAANkGjbtulIK2jbtm3bts24bdu2bdu2baNsG6/wTpL6hIiYgMCsEOXyYHIQco27S5YhHuvzveMvoNqVvJtHIS5sXy8GyP9o9mHEB41QB2aH+42R3bMCaQs3Ht/SU5rCuNURwpS51Td1DyXPPr4fQMxsothpwIphZoJQADFtFOTEbp7GOqDAlrIzbUKOJqTvcVBwmXCk9Lyh2iNE9UceAZatoB9J4bI3BNh+DIgCOoWR4xRjPxD4MB5w957Q6qZgAkZvFLj2dH73gjlhKnat0MjzFz0Ay1ZByx8X5D8upKnH+0Ds+uTOGBcFaIxsN1bM+FxgRbNa6+HJKzvNwb3AuHVY8Mjf+bW7StEWLwx8CMD5gj35hbotypxmLSxbJWXwPj3RQ7Fr5vaH8cOO5y/A0NU5R+xSgamvaqxjsXrEpYKV85wx9r0SIpCggQSdIuWtxw7N4Gxdc/Hr7z+DeYcCJGj+ugDxOK5BHTUTdd7q7OBcwwIDdwvaw0DaXYMShJH4PuJa79FhbGGHMW/tC4COnYdJycuvIlxeI9r4/43Yw0OtW4RpMDX1wgbVN6q0FnbDDmNlog/x92dry1ZSXMOlV9jVG9gF7DCWLHwHaF2fi19ja7VeduUB0JGEbfAob0mOA9tNrb67gKItVgTw+OGY411R9gI/PZqYt0G+DfyfTcKAlSWPGnzBwg2A9WPZBpxrlNO2CTQY+gPp6joWmyrCgZacRL1hTKubsJzIwYC/5Uiu8XPQN2Kdam/9nwDKhnHN70BEetSaBCEsIb0/AABWUDgg4gAAANAGAJ0BKlMADAA+xVKgTKelIyI6uZgA8BiJbACdMxMEj7d9gF2HaaiM36V9eZ6IH9y6wD9YPTM9i0EURXYAwAD+0Mf+Z1vx/8SEl5oklAPm/eh1i/8CRIzM2toRoTyswzCnsV2/yifDT4YvCLMgFwKhI4ZIBlJk283PWXhidGGlsF57L+XUwnzK8EbiRdHg8gZfVWBJyNUq6AIqr89arujv2Zm/aqp+bm0+V/iiQiikYRMjdzJ4jnqpdXUZ7k3bIIGFkvqpdX/uX/YpUyv+gBmP//F1wn6q76iGAz5Fj7IAAAA="
+                        alt="">
+                </div>
+
+            </div>
+
+            <div class="header-top-right">
+                <p>как заказывать еду?</p>
+                <button><a href="./FAQ.html">FAQ</a></button>
+            </div>
+
+        </div>
+
+        <div class="header-top-bottom"></div>
+
+        <div class="header-middle">
+            <div class="header-middle-left">
+
+                
+                <div class="button-c">
+
+                    <div class="hamburger-menu">
+                        <input id="menu__toggle" type="checkbox" />
+                        <label class="menu__btn" for="menu__toggle">
+                          <span></span>
+                        </label>
+                        <ul class="menu__box">
+                            <div class="left-menu">
+                                <p>Пройдите регистрацию</p>
+                                <li>+ привязка банковской карты</li>
+                                <li>+ повторный заказ в пару кликов</li>
+                                <li>+ история заказов</li>
+                                <li>+ участие в розыгрышах и акциях</li>
+                            </div>
+
+                            <div class="right-language-regis">
+                                <div class="language">
+                                    <p>Выберте язык:</p>
+                                    <button>РУС</button>
+                                </div>
+
+                                <button class="regis-button">ВХОД</button>
+                            </div>
+                        </ul>
+                      </div>
+
+                    <img src="./img chocoFood/location-outline.svg" alt="" class="menu-location">
+                    <button class="header-middle-button">город</button>
+                    <button class="header-middle-button">улица</button>
+                </div>
+
+            </div>
+                <img src="./img chocoFood/chocoFood-top.svg" alt="" style="width: 220px;
+                                          height: 30px;">
+
+            <div class="header-middle-right">
+                <button>Вход</button>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <div class="header-bottom-left">
+                <img src="./img chocoFood/search-outline.svg" alt="">
+                <input type="text" placeholder="Название заведения и блюдаю...">
+                <button>Найти</button>
+            </div>
+
+            <div class="header-bottom-right">
+                <p>Популярные запросы:</p>
+                <ul>
+                    <li><a href="#">Суши</a></li>
+                    <li><a href="#">Грузинская кухня</a></li>
+                    <li><a href="#">Бургер</a></li>
+                    <li><a href="#">Суп с гречей</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section-top">
+
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+        </section>
+
+        <section class="section-middle">
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+            <p>card</p>
+        </section>
+
+        <section class="section-bottom">
+            <p style="font-family: Roboto, sans-serif;">
+                Решили попробовать японские деликатесы или заказать обед из ресторана восточной кухни, но не знаете, как это правильно сделать? Используя наш <br>
+                сервис, вы избавите себя от этих проблем. Теперь на одном сайте вам доступны разные заведения Алматы с полным ассортиментом первых и вторых блюд, <br>
+                закусок, салатов, десертов и всего остального. <br>
+
+                Удобный сервис для каждого<br>
+                Доставка еды в Алматы доступна вам в любое время суток и в любой день недели, если вы решили использовать простой и эффективный сервис по работе <br>
+                с различными заведениями общественного питания. У вас нет необходимости тратить много времени в поисках нужного блюда. На нашем сайте уже <br>
+                предоставлена необходимая информация. Используя удобную навигацию, вы быстро найдете требуемое. Зайдя в этот раздел, можно ознакомиться с <br>
+                полным ассортиментом ресторана, ценами, специальными предложениями, условиями доставки. <br>
+
+                Если вас интересует не конкретное кафе или ресторан, а лишь одно-единственное блюдо, которое должно стать главным украшением праздничного стола? <br>
+                 Тогда вы просто набираете его в меню поиска, и вам будут предложены все места, где вы сможете его заказать. <br>
+
+                Оформление заказа<br>
+                Мы предусмотрели все детали, позволяющие нашим клиентам как можно быстрее получить свой заказ и не потратить при этом ни одного лишнего тенге. <br>
+                Оформить заказ у нас очень легко, а наш оператор позаботится о том, чтобы все ваши пожелания были выполнены с максимальной точностью. При этом, <br>
+                все услуги Chocofood полностью бесплатны. Все, что вы оплачиваете – стоимость блюд и услуги курьера ресторана. В описании указана цена доставки, <br>
+                 которая рассчитывается в зависимости от расстояния и суммы минимального заказа. <br>
+
+                При оформлении своего заказа вы можете ознакомиться со специальными предложениями, которые доступны вам в выбранном ресторане. Это могут быть: <br>
+
+                скидки на некоторые блюда; <br>
+                подарки; <br>
+                бесплатная доставка; <br>
+                возможность рассчитаться бонусами. <br>
+                Мы предлагаем отличные условия, чтобы каждый наш клиент остался доволен и обязательно вернулся на Chocofood в следующий раз.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <img src="./img chocoFood/chocoFood-top.svg" alt="" style="width: 210px;
+            height: 25px;
+            margin-bottom: -2px;
+            margin-left: -45px;">
+
+            <p style="color: white;
+                      font-size: 10px;
+                      font-family: Roboto, sans-serif;">Севрис доставки еды в </p>
+        </div>
+
+        <div class="footer-middle">
+            <div class="footer-middle-start">
+                <p class="footer-middle-p">ПАРТНЕРАМ</p>
+                <ul>
+                    <li class="footer-middle-li"><a href="#">О компани</a></li>
+                    <li class="footer-middle-li"><a href="#">Что предлагаем</a></li>
+                    <li class="footer-middle-li"><a href="#">Откуда клиенты</a></li>
+                    <li class="footer-middle-li"><a href="#">Как это работет</a></li>
+                    <li class="footer-middle-li"><a href="#">Пользвательское соглашение</a></li>
+                    <li class="footer-middle-li"><a href="#">Карта сайта</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-middle-center">
+                <p class="footer-middle-p">МОБИЛЬНОЕ ПРИДЛОЖЕНИЕ</p>
+                <ul>
+                    <li class="footer-middle-li"><a href="#">App Store</a></li>
+                    <li class="footer-middle-li"><a href="#">Google Play Market</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-noddle-end">
+                <p class="footer-middle-p">ПРИСОЕДИНЯЙЕТСЬ К НАМ!</p>
+                <ul>
+                    <li class="footer-middle-li"><a href="#">Facebook</a></li>
+                    <li class="footer-middle-li"><a href="#">ВКонтакте</a></li>
+                    <li class="footer-middle-li"><a href="#">Insagramm</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <img src="#" alt="deposit photo">
+            <p style="color: white;
+                      font-family: Roboto, sans-serif;
+                      font-weight: 200;">© 2013-2024 TOO "Интернет Доставка"</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
