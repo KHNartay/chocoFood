@@ -246,7 +246,74 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.cold-foods h5 {
+  align-items: start;
+  justify-content: start;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+/* card style */
+.hr {
+  border: 1px solid rgba(150, 150, 150, 0.70);
+  margin-top: 150px;
+  width: 90px;
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   gap: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.050);
+  padding: 3px;
+  height: 350px;
+  width: 235px;
+  margin-bottom: 25px;
+}
+
+.card img {
+  position: absolute;
+  width: 235px;
+  height: 170px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  font-family: "Roboto", "Helvetica Neue",;
+  font-weight: 100;
+  margin-top: -178px;
+}
+
+.card p {
+  position: absolute;
+  font-family: "Roboto", "Helvetica Neue",;
+  font-weight: 200;
+  font-size: 16px;
+  margin-top: 60px;
+}
+
+.card button {
+  position: absolute;
+  border: none;
+  border-radius: 20px;
+  width: 210px;
+  height: 40px;
+  background-color: rgb(76, 175, 80);
+  color: white;
+  margin-bottom: -280px;
 }
 
 /* section bottom */
