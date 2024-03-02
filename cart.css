@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.header h5 {
+    display: flex;
+    margin-left: 30px;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.header h5 span {
+    color: gray;
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+/* left */
+.left {
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+/* right */
+.right {
+    width: 40%;
+    height: auto;
+}

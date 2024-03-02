@@ -408,7 +408,7 @@
     position: absolute;
     width: 25px;
     height: 3px;
-    background-color: rgb(255, 255, 255);
+    background-color: black;
   }
   .menu__btn > span::before {
     content: '';
