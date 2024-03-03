@@ -1,49 +1,26 @@
-// const cards = document.querySelector(".cards");
-// const url =
-//   'https://65d7137927d9a3bc1d7a1726.mockapi.io/cards';
-// fetch(url)
-//   .then((res) => res.json())
-//   .then((data) => {
-//     data.forEach((product) => {
-//       cards.appendChild(createCard(product));
-//     });
-//   })
-//   .catch((error) => {
-//     cards.innerHTML = `<p>Error occured. Error: ${error}</p>`;
-//   });
-
-async function fetchUrl() {
-  try {
-  const url =
-  'https://65d7137927d9a3bc1d7a1726.mockapi.io/cards';
-
-  const response = await fetch(url);
-  const data = await response.json();
-  data.forEach((product) => {
-    cards.appendChild(createCard(product));
-  })
-} catch (error) {alert('Error occured')}
-
-  return data;
-}
-
 function createCard(product) {
-  const product = fetchUrl() // destructring
+  const { id, url, price, name} = product; // destructring
 
-  const card = document.querySelector(".card");
+  const cardsDiv = document.createElement('div');
+
+  const card = document.createElement("div");
   card.classList.add("card");
 
   const img = document.createElement("img");
-  img.src = product.url;
+  img.src = url;
   img.alt = "";
 
-  const nameProduct = document.createElement("p");
-  nameProduct.textContent = product.name;
+  const cardName = document.createElement('p')
+  cardName.textContent = name;
+  cardName.style.fontWeight = '300';
 
-  const priceHeading = document.createElement("h3");
+  const priceHeading = document.createElement("h4");
   priceHeading.textContent = getPrice(price) + " ₸";
+  priceHeading.style.marginTop = '160px';
+  priceHeading.style.fontSize = '21px';
 
   const button = document.createElement("button");
+  button.style.marginBottom = '-240px'
   if (isAddedToCart(product)) {
     button.textContent = "Added to cart";
     button.enabled = false;
@@ -55,9 +32,11 @@ function createCard(product) {
   }
 
   card.appendChild(img);
-  card.appendChild(nameProduct);
+  card.appendChild(cardName);
   card.appendChild(priceHeading);
   card.appendChild(button);
+
+  cardsDiv.appendChild(card);
 
   return card;
 }
@@ -76,11 +55,6 @@ function getPrice(price) {
   return priceStr;
 }
 
-function isAddedToCart(product) {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  return cart.find((p) => p.id == product.id) != null;
-}
-
 function addToCart(product) {
   const cart = localStorage.getItem("cart");
   const cartItems = JSON.parse(cart) || [];
@@ -91,3 +65,22 @@ function addToCart(product) {
   localStorage.setItem("cart", JSON.stringify(cartItems));
   window.location.reload();
 }
+
+function isAddedToCart(product) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  return cart.find((p) => p.id == product.id) != null;
+}
+
+const cards = document.querySelector(".cards");
+const url =
+  "https://65d7137927d9a3bc1d7a1726.mockapi.io/cards";
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+    data.forEach((product) => {
+      cards.appendChild(createCard(product));
+    });
+  })
+  .catch((error) => {
+    cards.innerHTML = `<p>Error occured. Error: ${error}</p>`;
+  });

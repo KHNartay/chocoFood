@@ -1,5 +1,5 @@
 function createCartItem(cartItemData) {
-  const { imgUrl, brand, category, price, quantity } = cartItemData;
+  const { url, name, price, quantity } = cartItemData;
 
   const cartItem = document.createElement("div");
   cartItem.classList.add("cart-item");
@@ -8,7 +8,7 @@ function createCartItem(cartItemData) {
   cartItemLeft.classList.add("cart-item-left");
 
   const img = document.createElement("img");
-  img.src = imgUrl;
+  img.src = url;
   img.alt = "";
 
   const cartItemLeftActions = document.createElement("div");
@@ -16,7 +16,7 @@ function createCartItem(cartItemData) {
 
   const itemNameLink = document.createElement("a");
   itemNameLink.href = "#";
-  itemNameLink.textContent = brand + " - " + category;
+  itemNameLink.textContent = name;
 
   const cartItemAmount = document.createElement("div");
   cartItemAmount.classList.add("cart-item-amount");
@@ -120,7 +120,7 @@ function getPrices() {
   cart.forEach(
     (cartItem) => (productsPrice += cartItem.price * cartItem.quantity)
   );
-  const deliveryPrice = productsPrice > 8000 ? 0 : 700;
+  const deliveryPrice = productsPrice > 3500 ? 800 : 0;
   const totalPrice = productsPrice + deliveryPrice;
   return {
     productsPrice,
