@@ -52,7 +52,7 @@ function getPrice(price) {
     priceSlices.unshift(priceStr);
     priceStr = priceSlices.join(" ");
   }
-  return priceStr;
+  return priceStr ;
 }
 
 function addToCart(product) {

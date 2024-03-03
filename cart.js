@@ -64,6 +64,8 @@ function createCartItem(cartItemData) {
   return cartItem;
 }
 
+
+
 function getPrice(price) {
   let priceStr = String(price);
   if (priceStr.length > 4) {
@@ -174,7 +176,7 @@ if (getCartSize() == 0) {
 }
 
 {
-  const displayCartBtn = document.querySelector("#display-cart button");
+  const displayCartBtn = document.querySelector(".display-cart button");
   displayCartBtn.addEventListener("click", () => {
     const cartItems = document.querySelector(".cart-items");
     cartItems.classList.toggle("hidden");

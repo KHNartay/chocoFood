@@ -139,13 +139,14 @@
 }
 
 .cart-button img {
-  height: 33px;
-  width: 33px;
+  height: 28px;
+  width: 28px;
+  margin-left: -10px;
 }
 
 .menu-location {
-    width: 27px;
-    height: 27px;
+    width: 25px;
+    height: 25px;
 }
 
 .header-middle-right button {
@@ -283,6 +284,7 @@
   align-items: center;
   justify-content: space-evenly;
   gap: 30px;
+  margin: 0 10px 0 10px;
 }
 
 .card {
@@ -422,17 +424,19 @@
   .menu__btn > span::after {
     display: block;
     position: absolute;
-    width: 25px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     background-color: white;
   }
   .menu__btn > span::before {
     content: '';
     top: -8px;
+    margin-top: 2px;
   }
   .menu__btn > span::after {
     content: '';
     top: 8px;
+    margin-top: -2px;
   }
 
   /* контейнер меню */
