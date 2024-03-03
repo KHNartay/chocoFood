@@ -1,127 +1,93 @@
-// const url = 'https://65d7137927d9a3bc1d7a1726.mockapi.io/cardsObject'
-// const response = await fetch(url)
-// const data = await response.json()
+// const cards = document.querySelector(".cards");
+// const url =
+//   'https://65d7137927d9a3bc1d7a1726.mockapi.io/cards';
+// fetch(url)
+//   .then((res) => res.json())
+//   .then((data) => {
+//     data.forEach((product) => {
+//       cards.appendChild(createCard(product));
+//     });
+//   })
+//   .catch((error) => {
+//     cards.innerHTML = `<p>Error occured. Error: ${error}</p>`;
+//   });
 
-// async function createCard() {
-//     const cardsDiv = document.querySelector('.cards');
+async function fetchUrl() {
+  try {
+  const url =
+  'https://65d7137927d9a3bc1d7a1726.mockapi.io/cards';
 
-//     // card one
-//     const cardOneImg = document.querySelector('.card-one img')
-//     cardOneImg.src = data[0].url
+  const response = await fetch(url);
+  const data = await response.json();
+  data.forEach((product) => {
+    cards.appendChild(createCard(product));
+  })
+} catch (error) {alert('Error occured')}
 
-//     document.querySelector('.card-one p').textContent = data[0].name;
-
-//     document.querySelector('.card-one span').textContent = data[0].price;
-
-//     const buttonOne = document.querySelector('.card-one button');
-//     buttonOne.addEventListener('click', () => {
-//                 buttonOne.textContent = 'Added to cart';
-//     })
-
-//     // card two
-//     const cardTwoImg = document.querySelector('.card-two img')
-//     cardTwoImg.src = data[1].url
-
-//     document.querySelector('.card-two p').textContent = data[1].name;
-
-//     document.querySelector('.card-two span').textContent = data[1].price;
-
-//     const buttonTwo = document.querySelector('.card-two button');
-//     buttonTwo.textContent = 'Added to cart';
-//     buttonTwo.addEventListener('click', () => {
-//       let cart=JSON.parse(localStorage.getItem('cart'))||[];
-//       cart.push(data[1]);
-
-
-//     })
-
-//     // card three
-//     const cardThreeImg = document.querySelector('.card-three img')
-//     cardThreeImg.src = data[2].url;
-
-//     document.querySelector('.card-three p').textContent = data[2].name;
-
-//     document.querySelector('.card-three span').textContent = data[2].price;
-
-//     const buttonThree = document.querySelector('card-three button');
-//     buttonThree.textContent = 'Added to cart';
-//     buttonThree.addEventListener('click', () => {
-//     })
-
-
-//     //card four
-//     const cardFourImg = document.querySelector('.card-four img')
-//     cardFourImg.src = data[3].url;
-
-//     document.querySelector('.card-four p').textContent = data[3].name;
-    
-//         document.querySelector('.card-four span').textContent = data[3].price;
-    
-//         const buttonFour = document.querySelector('.card-four button');
-//         buttonFour.addEventListener('click', () => {
-//                     buttonFour.textContent = 'Added to cart';
-//         })
-
-//     return cardsDiv;
-// }
-
-// createCard();
-
-//----------------------------------------------------------------
-
-//slider
-    let slideIndex = 0;
-const slides = document.querySelectorAll('.slide');
-
-function showSlides() {
-  slides.forEach(slide => {
-    slide.style.transform = `translateX(-${slideIndex * 100}%)`;
-  });
+  return data;
 }
 
-function nextSlide() {
-  if (slideIndex === slides.length - 1) {
-    slideIndex = 0;
+function createCard(product) {
+  const product = fetchUrl() // destructring
+
+  const card = document.querySelector(".card");
+  card.classList.add("card");
+
+  const img = document.createElement("img");
+  img.src = product.url;
+  img.alt = "";
+
+  const nameProduct = document.createElement("p");
+  nameProduct.textContent = product.name;
+
+  const priceHeading = document.createElement("h3");
+  priceHeading.textContent = getPrice(price) + " ₸";
+
+  const button = document.createElement("button");
+  if (isAddedToCart(product)) {
+    button.textContent = "Added to cart";
+    button.enabled = false;
   } else {
-    slideIndex++;
+    button.textContent = "Add to cart";
+    button.addEventListener("click", () => {
+      addToCart(product);
+    });
   }
-  showSlides();
+
+  card.appendChild(img);
+  card.appendChild(nameProduct);
+  card.appendChild(priceHeading);
+  card.appendChild(button);
+
+  return card;
 }
 
-function prevSlide() {
-  if (slideIndex === 0) {
-    slideIndex = slides.length - 1;
-  } else {
-    slideIndex--;
+function getPrice(price) {
+  let priceStr = String(price);
+  if (priceStr.length > 4) {
+    const priceSlices = [];
+    for (let i = priceStr.length - 3; i >= 0; i -= 3) {
+      priceSlices.unshift(priceStr.slice(i > 0 ? i : 0, i + 3));
+      priceStr = priceStr.slice(0, i);
+    }
+    priceSlices.unshift(priceStr);
+    priceStr = priceSlices.join(" ");
   }
-  showSlides();
+  return priceStr;
 }
 
-setInterval(nextSlide, 5000);
-
-//----------------------------------------------------------------
-
-async function getUrl() {
-  const url = 'https://65d7137927d9a3bc1d7a1726.mockapi.io/cards'
-    const response = await fetch(url)
-    const data = await response.json()
-    return data;
+function isAddedToCart(product) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  return cart.find((p) => p.id == product.id) != null;
 }
 
-function createCartItem() {
-  const cart = document.querySelector('.cart');
-
-  document.querySelector('card-one img').src = getUrl();
-
-  document.querySelector('card-one p').textContent = getUrl();
-
-  document.querySelector('card-one span').textContent = getUrl();
-
-  const buttonOne = document.querySelector('card-one button');
-  buttonOne.addEventListener('click', () => {
-    localStorage.setItem('card-one')
-      buttonOne.textContent = 'Added to cart';
-    })
+function addToCart(product) {
+  const cart = localStorage.getItem("cart");
+  const cartItems = JSON.parse(cart) || [];
+  if (isAddedToCart(product)) {
+    return;
+  }
+  cartItems.push({ ...product, quantity: 1 });
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+  window.location.reload();
 }
-
-createCartItem();

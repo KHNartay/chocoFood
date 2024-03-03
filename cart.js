@@ -1,9 +1,3 @@
-//  id: 1,
-// brand: "Reebok",
-// imgUrl: "https://a.lmcdn.ru/product/R/T/RTLACN769003_22188898_1_v1_2x.jpg",
-// price: 16100,
-// category: "Футболка спортивная",
-
 function createCartItem(cartItemData) {
   const { imgUrl, brand, category, price, quantity } = cartItemData;
 
@@ -26,27 +20,20 @@ function createCartItem(cartItemData) {
 
   const cartItemAmount = document.createElement("div");
   cartItemAmount.classList.add("cart-item-amount");
-  cartItemAmount.addEventListener("click", () => increaseQuantity(cartItemData)); 
 
   const trashButton = document.createElement("button");
-  trashButton.addEventListener("click", () => decreaseQuantity(cartItemData) - 3);
-
   trashButton.innerHTML =
     cartItemData.quantity > 1
       ? '<ion-icon name="remove"></ion-icon>'
       : '<ion-icon name="trash-outline"></ion-icon>';
+  trashButton.addEventListener("click", () => decreaseQuantity(cartItemData));
 
   const amountText = document.createElement("p");
   amountText.textContent = quantity;
 
   const addButton = document.createElement("button");
   addButton.innerHTML = '<ion-icon name="add-outline"></ion-icon>';
-
-  const clearCartButton = document.querySelector('#clear-cart')
-  clearCartButton.addEventListener("click", () =>{
-    localStorage.removeItem("cart");
-    window.location.reload()
-  })
+  addButton.addEventListener("click", () => increaseQuantity(cartItemData));
 
   cartItemAmount.appendChild(trashButton);
   cartItemAmount.appendChild(amountText);
@@ -66,50 +53,8 @@ function createCartItem(cartItemData) {
   closeButton.addEventListener("click", () => removeProduct(cartItemData));
 
   const priceText = document.createElement("p");
-  priceText.textContent = getPrice(price) + " ₸";
+  priceText.textContent = getPrice(price * quantity) + " ₸";
 
-// {
-//   const {sumProductPrice, sumDeliveryPrice, sumTotalPricetotalPrice} = getPrices()
-
-//   const productPriceText = document.querySelector("#product-price");
-//   productPriceText.textContent = getPrices(sumProductPrice) + ' ₸';
-
-//   const delPriceText = document.querySelector("#delivery-price");
-//   delPriceText.textContent = getPrices(sumDeliveryPrice) + ' ₸';
-
-//   const totalPriceText = document.querySelector("#total-price");
-//   totalPriceText.textContent = getPrices(sumTotalPricetotalPrice) + ' ₸';
-
-//   const purchaseBtn = document.querySelector(".cart-right button");
-
-//   if (totalPrice > 0) {
-//     purchaseBtn.classList.remove('inactive');
-//   } else {
-//     purchaseBtn.classList.add('inactive');
-//   }
-// }
-
-  const cartSize = document.querySelector("#cart-size");
-  cartSize.textContent = cartLength();
-
-  const disCart = document.querySelector('display-cart');
-  if (cartSize === 0) {
-    disCart.style.display = 'none';
-  }
-
-  const disCartBtn = document.querySelector("#display-cart button");
-
-  disCartBtn.addEventListener("click", () => {
-    const cartItem = document.querySelector(".cart-item");
-    cartItem.classList.toggle('hidden');
-    if (cartItem.classList.contains('hidden')) {
-      disCartBtn.innerHTML = '<ion-icon name="chevron-up-outline"></ion-icon>';
-    }
-    else {
-      disCartBtn.innerHTML = '<ion-icon name="chevron-down-outline"></ion-icon>';
-    }
-  })
-  
   cartItemRight.appendChild(closeButton);
   cartItemRight.appendChild(priceText);
 
@@ -119,47 +64,26 @@ function createCartItem(cartItemData) {
   return cartItem;
 }
 
-function cartLength() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartSize = document.querySelector("#cart-size");
-
-  if (cart.length > 0) {
-    cartSize.textContent = cart.length;
-  } else {
-    cartSize.textContent = 0;
+function getPrice(price) {
+  let priceStr = String(price);
+  if (priceStr.length > 4) {
+    const priceSlices = [];
+    for (let i = priceStr.length - 3; i >= 0; i -= 3) {
+      priceSlices.unshift(priceStr.slice(i > 0 ? i : 0, i + 3));
+      priceStr = priceStr.slice(0, i);
+    }
+    priceSlices.unshift(priceStr);
+    priceStr = priceSlices.join(" ");
   }
-
-  return cart.length;
+  return priceStr;
 }
 
-  // function getPrices() {
-  //   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  //   const productsPrice = document.querySelector("#products-price");
-  //   let sumProductsPrice = 0;
-  //   cart.array.forEach((p) => {
-  //     productsPrice.textContent = sumProductsPrice += p.price * p.quantity;
-  //   });
-
-  //     const deliveryPrice = document.querySelector("#delivery-price");
-  //     let sumDeliveryPrice = 0;
-  //     cart.forEach((p) => {
-  //       deliveryPrice.textContent = sumDeliveryPrice += p.price * p.quantity;
-  //     });
-
-  //     const totalPrice = document.querySelector("#total-price");
-  //     let sumTotalPrice = 0;
-  //     cart.forEach((p) => {
-  //       totalPrice.textContent = sumTotalPrice += p.price * p.quantity;
-  //     });
-
-  //   if (totalPrice() >= 8000) {
-  //     deliveryPrice.textContent = 0;
-  //   }
-  //   else {
-  //     deliveryPrice.textContent = 700;
-  //   }
-  // }
+function removeProduct(product) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart = cart.filter((p) => p.id != product.id);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.reload();
+}
 
 function increaseQuantity(product) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -183,48 +107,83 @@ function decreaseQuantity(product) {
   window.location.reload();
 }
 
-function removeProduct(product) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart = cart.filter((p) => p.id != product.id);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  window.location.reload();
-}
-
-function getPrice(price) {
-  let priceStr = String(price);
-  if (priceStr.length > 4) {
-    const priceSlices = [];
-    for (let i = priceStr.length - 3; i >= 0; i -= 3) {
-      priceSlices.unshift(priceStr.slice(i > 0 ? i : 0, i + 3));
-      priceStr = priceStr.slice(0, i);
-    }
-    priceSlices.unshift(priceStr);
-    priceStr = priceSlices.join(" ");
+function getPrices() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length == 0) {
+    return {
+      productsPrice: 0,
+      deliveryPrice: 0,
+      totalPrice: 0,
+    };
   }
-  return priceStr;
+  let productsPrice = 0;
+  cart.forEach(
+    (cartItem) => (productsPrice += cartItem.price * cartItem.quantity)
+  );
+  const deliveryPrice = productsPrice > 8000 ? 0 : 700;
+  const totalPrice = productsPrice + deliveryPrice;
+  return {
+    productsPrice,
+    deliveryPrice,
+    totalPrice,
+  };
 }
 
-function clearCartButton () {
-  clearCartButton.addEventListener('click', () => {
-    localStorage.removeItem('cart')
-    window.location.reload()
-  })
+function getCartSize() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  return cart.length;
 }
 
-const cart = localStorage.getItem('cart')
-const cartItem = JSON.parse(cart) || []
-
-for (const item of cartItem) {
-  const cart = createCartItem(item)
-  document.querySelector('.cart-items').appendChild(cart)
+const cart = localStorage.getItem("cart");
+const cartItems = JSON.parse(cart) || [];
+for (const item of cartItems) {
+  const card = createCartItem(item);
+  document.querySelector(".cart-items").appendChild(card);
 }
 
-const url = 'https://65d7137927d9a3bc1d7a1726.mockapi.io/cards'
+const clearCartButton = document.querySelector("#clear-cart");
+clearCartButton.addEventListener("click", () => {
+  localStorage.removeItem("cart");
+  window.location.reload();
+});
 
-fetch(url)
-  .then((response) => response.json())
-  .then((data) => {
-    data.forEach(product => {
-      cards.appendChild(createCard(product));
-    });
-  })
+{
+  const prdPriceText = document.querySelector("#products-price");
+  const delPriceText = document.querySelector("#delivery-price");
+  const totalPriceText = document.querySelector("#total-price");
+  const { productsPrice, deliveryPrice, totalPrice } = getPrices();
+  prdPriceText.textContent = getPrice(productsPrice) + " ₸";
+  delPriceText.textContent = getPrice(deliveryPrice) + " ₸";
+  totalPriceText.textContent = getPrice(totalPrice) + " ₸";
+
+  const purchaseBtn = document.querySelector(".cart-right button");
+  if (totalPrice > 0) {
+    purchaseBtn.classList.remove("inactive");
+  } else {
+    purchaseBtn.classList.add("inactive");
+  }
+}
+
+const cartSize = document.querySelector("#cart-size");
+cartSize.textContent = getCartSize();
+const displaycartDiv = document.querySelector(".display-cart");
+if (getCartSize() == 0) {
+  displaycartDiv.classList.add("hidden");
+} else {
+  displaycartDiv.classList.remove("hidden");
+}
+
+{
+  const displayCartBtn = document.querySelector("#display-cart button");
+  displayCartBtn.addEventListener("click", () => {
+    const cartItems = document.querySelector(".cart-items");
+    cartItems.classList.toggle("hidden");
+    if (cartItems.classList.contains("hidden")) {
+      displayCartBtn.innerHTML =
+        '<ion-icon name="chevron-down-outline"></ion-icon>';
+    } else {
+      displayCartBtn.innerHTML =
+        '<ion-icon name="chevron-up-outline"></ion-icon>';
+    }
+  });
+}

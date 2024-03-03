@@ -296,7 +296,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.050);
   padding: 3px;
-  height: 350px;
+  height: 300px;
   width: 235px;
   margin-bottom: 25px;
 }
@@ -423,7 +423,7 @@
     position: absolute;
     width: 25px;
     height: 3px;
-    background-color: black;
+    background-color: white;
   }
   .menu__btn > span::before {
     content: '';
