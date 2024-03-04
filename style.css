@@ -285,6 +285,7 @@
   justify-content: space-evenly;
   gap: 30px;
   margin: 0 10px 0 10px;
+  flex-wrap: wrap;
 }
 
 .card {
