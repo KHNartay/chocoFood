@@ -3,7 +3,6 @@ main {
     height: 300px;
     margin: 0 auto;
     display: flex;
-    gap: 60px;
     margin-top: 20px;
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.50);
     padding-left: 10px;
@@ -15,7 +14,7 @@ main {
 .cart-left {
     width: 60%;
     overflow-y: auto;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 .cart-left::-webkit-scrollbar {
@@ -177,6 +176,7 @@ main {
     margin-right: -30px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    margin-left: 56px;
 }
 
 .purchase-details {

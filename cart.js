@@ -66,9 +66,9 @@ function createCartItem(cartItemData) {
 
 
 
-function getPrice(price) {
-  let priceStr = String(price);
-  if (priceStr.length > 4) {
+function getPrice(price, quantity) {
+  let priceStr = String(price)
+
     const priceSlices = [];
     for (let i = priceStr.length - 3; i >= 0; i -= 3) {
       priceSlices.unshift(priceStr.slice(i > 0 ? i : 0, i + 3));
@@ -76,7 +76,7 @@ function getPrice(price) {
     }
     priceSlices.unshift(priceStr);
     priceStr = priceSlices.join(" ");
-  }
+
   return priceStr;
 }
 
